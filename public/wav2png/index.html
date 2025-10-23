@@ -644,11 +644,11 @@
                 pngContext.drawImage(img, 0, 0);
                 let imageData = pngContext.getImageData(0, 0, img.width, img.height).data;
                 let newImageData = Array();
-                for (let i = 0; i < imageData.length; i += 4) {
+                for (let i = 0; i < imageData.length * 2; i += 4) {
                     newImageData.push((((imageData[i] + imageData[i + 1] + imageData[i + 2]) / 768) - 0.5) * 2);
                 }
                 loading.style.opacity = "0";
-                exportWAV("audio/wav", newImageData, newImageData.length);
+                exportWAV("audio/wav", newImageData, newImageData.length * 2);
             };
         }
     </script>
